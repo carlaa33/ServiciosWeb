@@ -214,7 +214,7 @@ public class Alumno extends AppCompatActivity {
     private void nuevo() {
         HttpURLConnection conn = null;
         try {
-            String URL="http://"+socket+"/datos1/insertar_alumno.php";
+            String URL="http://localhost/api/alumnos";
 
             // Objeto url que recibe como parametro la cadena al webservice de Insertar
             url = new URL(URL);
@@ -233,6 +233,7 @@ public class Alumno extends AppCompatActivity {
 
             // Creación de Objetos JSON y carga de datos
             JSONObject jsonn = new JSONObject();
+            jsonn.put("_id", id.getText().toString());
             jsonn.put("nombre", nombre.getText().toString());
             jsonn.put("direccion", direccion.getText().toString());
 
@@ -260,7 +261,6 @@ public class Alumno extends AppCompatActivity {
         titulo.setText(accion);
         switch(accion) {
             case "Nuevo":
-                layin.setVisibility(View.INVISIBLE);
                 aceptar.setText("Guardar");
                 break;
             case "Eliminar":
